@@ -69,15 +69,15 @@ a[i,j] = {
 ---
 
 * Adjacency 
-    * Two nodes are Adjacent if connected by an edge 
-    
-    ![image](5.png)
+    * Two nodes are Adjacent if connected by an edge  
+
+        ![image](5.png)
 
     Here A and B are adjacent to each other
 
 * Successor and Predessor 
 
-    * In Directed Graphs there are successor and predessor
+    * In Directed Graphs there are successor and predessor  
     ![image](6.png)
 
 * Paths 
@@ -105,8 +105,9 @@ a[i,j] = {
     
     * Reverse of Cyclic 
 
-    > A directed acyclic graph is called a DAG
-    ![image](7.png)
+        > A directed acyclic graph is called a DAG  
+
+        ![image](7.png)
 
 
 * Degree of a Vertex 
