@@ -95,8 +95,11 @@ The above code can be broken down into two small parts
 <br>  
 
 ___
+<br>  
 
-### <p align ="center">Displaying the contents of the graph</p>
+### <p align ="center">Displaying the contents of the graph</p>  
+
+<br>  
 
 ~~~c
 void display()
@@ -117,8 +120,12 @@ void display()
 <br>  
 
 ___
+<br>  
 
-### <p align ="center">Calcualting **Indegree**</p>
+### <p align ="center">Calcualting **Indegree**</p>  
+
+<br>  
+
 Indegree of a Vertex is the number of paths leading to the particular node.  
 
 ~~~c
@@ -136,6 +143,7 @@ int indegree(graph *adj_matrix , int v)
 ~~~
 
 ___
+<br>  
 
 ### <p align ="center">Calcualting **Outdegree**</p>
 
@@ -160,3 +168,75 @@ int outdegree(graph *adj_matrix , int v)
 
 >Note :  
 For Undirected Graphs Both Indegree And Outdegree are same.
+
+
+<br>  
+<br>  
+
+
+
+# ***Implementation Using Adjacency List*** 
+
+## <p align="center"><em>Structure of Graph</em></p>
+---
+~~~c 
+typedef struct node
+{
+    int data;
+    struct node* link;
+} node;
+~~~
+
+- here is a visual representation of the structure  
+  
+
+    <img src="9.png"  width="60%" >  
+
+    ***data ==> Name of the Vertex  
+    link ==> node pointer to next pointer*** 
+
+<br>  
+
+First we Create an array of pointers to structures
+
+```c
+node* a[MAX];
+```
+<img src="10.png" width=50%>
+
+Every index now acts like a vertex and we chain the nodes which are connected to the vertex with the index.
+___
+
+## <p align="center"><em>ADT OF GRAPHS</em></p>  
+---
+
+* Creating a Graph
+* Displaying a Graph
+* Calulating Indegree
+* Calulating Outdegree
+
+___ 
+<br>
+
+### <p align ="center">Creating a graph</p>
+
+~~~c
+void create ( node* a[], int n)
+{
+    int i , j;
+    for(i =0 ; i<n;i++)
+    {
+        a[i]=NULL;
+    }
+    while(1)
+    {
+        printf("Enter the source and destination");
+        scanf("%d %d" , &i, &j);
+        if(i<0|| j<0|| i>=n || j>=n)
+        {
+            break;
+        }
+        insert(a,i,j);
+    }
+}
+~~~

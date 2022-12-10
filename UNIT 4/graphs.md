@@ -13,7 +13,8 @@
 
 ``` Graphs are of two types : ```  
 <br>
-### <p align="center">*Undirected graphs*</p>
+### <p align="center">*Undirected graphs*</p>  
+
     Well you can think of undirected graphs as cities which are connected to each other,  you have a road from CITY A to CITY B ; but you can take the same road to come form CITY B to CITY A .    
 
 ![image](1.png)
