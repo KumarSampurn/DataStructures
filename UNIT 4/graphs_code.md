@@ -240,3 +240,85 @@ void create ( node* a[], int n)
     }
 }
 ~~~
+
+Understanding the code by breaking it into segments
+~~~c
+    int i , j;
+    for(i =0 ; i<n;i++)
+    {
+        a[i]=NULL;
+    }
+
+    // The first part of the funciton is setting each array index position as NULL.  
+
+~~~
+<br>  
+
+~~~c
+    while(1)
+    {
+        printf("Enter the source and destination");
+        scanf("%d %d" , &i, &j);
+        if(i<0|| j<0|| i>=n || j>=n)
+        {
+            break;
+        }
+        insert(a,i,j);
+
+    // The second part of the function takes source and destination and if they are valid it calls the insert function with source and destination
+    }
+~~~
+
+*Create Fucntion* is a Helper Fucntion to insert fucntion
+
+
+~~~c
+void insert (node * a[], int i , int j)
+{
+    node* temp = (node*)malloc(sizeof(node));
+    temp-> data = j;
+    temp->link =NULL;
+
+    node* cur = a[i];
+    if( cur->link ==NULL)
+    {
+        a[i]=temp;
+        return;
+    }
+
+    while(cur->link!=NULL)
+    {
+        cur=cur->link;
+    }
+
+    cur->link=temp;
+}
+~~~
+Understanding the code by breaking it into segments
+
+~~~c
+node* temp = (node*)malloc(sizeof(node));
+temp-> data = j;
+temp->link =NULL;
+
+// This Part creates a node and assign the destination as the value of the node
+~~~
+
+
+~~~c
+node* cur = a[i];
+if( cur->link ==NULL)
+{
+    a[i]=temp;
+    return;
+}
+
+while(cur->link!=NULL)
+{
+    cur=cur->link;
+}
+
+cur->link=temp;
+~~~
+
+
