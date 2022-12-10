@@ -34,6 +34,9 @@ a[i,j] = {
             1   if ( i -> j)
             0   otherwise
          }
+
+
+In an adjacency matrix a[i,j] signifies that there is a path from vertex i to vertex j 
 ~~~
 
 
