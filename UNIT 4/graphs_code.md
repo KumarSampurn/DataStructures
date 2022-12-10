@@ -1,18 +1,22 @@
 # ***Implementation Using Adjacency Matrix***  
----
-<br>
 
-```Structure of the graphs```
-~~~c
-typedef struct graph{
+
+## <p align="center"><em>Structure of Graph</em></p>
+---
+~~~c 
+typedef struct graph
+{
     int n;
     int adj[MAX][MAX];
-}graph;
+} graph;
 ~~~
-- here is a visual representation of the structure 
-<img src="8.png"  width="60%" >  
-***n ==> no. of vertices  
-MAX ==> user defined macro***  
+- here is a visual representation of the structure  
+  
+
+    <img src="8.png"  width="60%" >  
+
+    ***n ==> no. of vertices  
+    MAX ==> user defined macro***  
 
 - For example if we create a pointer to the structure lets say 
     ~~~c 
@@ -26,7 +30,7 @@ MAX ==> user defined macro***
     adj_matrix -> adj[i][j] = 69
     ~~~
 
-    ``` This is becuase adj_matrix is a pointer to the whole strucutre but and that structure has two members adj which is a matrix and the other one is n which is the number of nodes```
+    ``` This is becuase adj_matrix is a pointer to the whole strucutre but and that structure has two members adj which is a matrix and the other one is n which is the number of vertices```
 
     ``` If it is still confusing then think of it like you created a pointer to a node to access the data and the link part```
 
@@ -45,15 +49,25 @@ MAX ==> user defined macro***
 
     > Note :  
        The above snippets are not equivalent statements they are just to make you understand how pointer works here  
-       >> graph is used in above example but in practice graph is the name of the data strucutre so we use adj_matrix as the name of the data structure.
+        
+    graph is used in above example but in practice graph is the name of the data strucutre so we use adj_matrix as the name of the data structure.
+---  
 
-### Creating a graph
+## <p align="center"><em>ADT OF GRAPHS</em></p>  
+---
+
+* Creating a Graph
+* Displaying a Graph
+* Calulating Indegree
+* Calulating Outdegree
+
+___ 
+
+### <p align ="center">Creating a graph</p>
 ~~~c
 void create_graph(graph *adj_matrix)
 {
     int i , j;
-
-    // initializing values to 0
 
     for (i=0 ; i< adj_matrix ->n ;i++)
     {
@@ -65,10 +79,8 @@ void create_graph(graph *adj_matrix)
 
     while(1)
     {
-        printf("Enter the source and Destination position");
-            
+        printf("Enter the source and Destination position");   
         scanf("%d%d", &i , &j);
-        
         if( i< 0 || j < 0|| i> MAX || j > MAX)
         {
             adj_matrix-> adj[i][j];
@@ -76,9 +88,16 @@ void create_graph(graph *adj_matrix)
     }
 }
 ~~~
+The above code can be broken down into two small parts  
+- First where we are initializing the matrix with 0 this step can be avoided by doing this step while creating the structure.
 
+- Second where we are asking for source and destination and if the value of source and destination are valid we make the set the a(i,j) index as 1.  
+<br>  
 
-### Displaying the contents of the graph
+___
+
+### <p align ="center">Displaying the contents of the graph</p>
+
 ~~~c
 void display()
 {
@@ -95,9 +114,11 @@ void display()
 
 ``` At first it might look a bit intimidating but its basicaaly displaying the contents of a double dimensional array which is easy as we are take two loops one nested inside other and we print all the elements in array ```
 
+<br>  
 
-### Calcualting **Indegree**
+___
 
+### <p align ="center">Calcualting **Indegree**</p>
 Indegree of a Vertex is the number of paths leading to the particular node.  
 
 ~~~c
@@ -114,10 +135,10 @@ int indegree(graph *adj_matrix , int v)
 }
 ~~~
 
+___
 
+### <p align ="center">Calcualting **Outdegree**</p>
 
-
-### Calcualting **Outdegree**
 
 Outdegree of a Vertex is the number of paths leading away from the nodes.  
 
@@ -136,4 +157,6 @@ int outdegree(graph *adj_matrix , int v)
 ~~~
 
 
->For Undirected Graphs Both Indegree And Outdegree are same.
+
+>Note :  
+For Undirected Graphs Both Indegree And Outdegree are same.
