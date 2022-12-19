@@ -17,7 +17,7 @@
 
     Well you can think of undirected graphs as cities which are connected to each other,  you have a road from CITY A to CITY B ; but you can take the same road to come form CITY B to CITY A .    
 
-![image](1.png)
+![image](images/1.png)
 
 ```Here is a representation of The Graphs as Adjacency Matrix```
 
@@ -44,7 +44,7 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 
 ```Here is a representation of The Graphs as Adjacency List or linked list```
 
-![image](3.png)
+![image](images/3.png)
 
 ### <p align="center">*Directed graphs*</p>
 
@@ -52,7 +52,7 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 
     Or you can say its One Sided like your feelings for your crush
 
-![image](2.png)
+![image](images/2.png)
 
 ```Here is a representation of The Graphs as Adjacency Matrix```
 
@@ -66,7 +66,7 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 
 ```Here is a representation of The Graphs as Adjacency List or Linked list```
 
-![image](4.png)
+![image](images/4.png)
 
 
 #### Terminologies Important : 
@@ -75,19 +75,19 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 * Adjacency 
     * Two nodes are Adjacent if connected by an edge  
 
-        ![image](5.png)
+        ![image](images/5.png)
 
     Here A and B are adjacent to each other
 
 * Successor and Predessor 
 
     * In Directed Graphs there are successor and predessor  
-    ![image](6.png)
+    ![image](images/6.png)
 
 * Paths 
 
     * Paths are Basically the road which you can take to reach a specific point
-    ![image](1.png)
+    ![image](images/1.png)
 
     ```In this figure, if i have to reach D from A``` 
 
@@ -101,7 +101,7 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 * Cycle
 
     * Graphs with atleast 1 are called cyclic graph .
-    ![image](1.png)
+    ![image](images/1.png)
 
     ```This is a cyclic graph due to B D E ```
 
@@ -111,7 +111,7 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 
         > A directed acyclic graph is called a DAG  
 
-        ![image](7.png)
+        ![image](images/7.png)
 
 
 * Degree of a Vertex 

@@ -13,7 +13,7 @@ typedef struct graph
 - here is a visual representation of the structure  
   
 
-    <img src="8.png"  width="60%" >  
+    <img src="images/8.png"  width="60%" >  
 
     ***n ==> no. of vertices  
     MAX ==> user defined macro***  
@@ -34,7 +34,7 @@ typedef struct graph
 
     ``` If it is still confusing then think of it like you created a pointer to a node to access the data and the link part```
 
-    <img src="8.png"  width="40%" ><img src="9.png"  width="43.7%" > 
+    <img src="images/8.png"  width="40%" ><img src="images/9.png"  width="43.7%" > 
 
     Here :  
     ``` 
@@ -177,7 +177,7 @@ For Undirected Graphs Both Indegree And Outdegree are same.
 
 # ***Implementation Using Adjacency List*** 
 
-## <p align="center"><em>Structure of Graph</em></p>
+## <p align="center"><em>Structure of Graph</em></structurep>
 ---
 ~~~c 
 typedef struct node
@@ -190,7 +190,7 @@ typedef struct node
 - here is a visual representation of the structure  
   
 
-    <img src="9.png"  width="60%" >  
+    <img src="images/9.png"  width="60%" >  
 
     ***data ==> Name of the Vertex  
     link ==> node pointer to next pointer*** 
@@ -202,7 +202,7 @@ First we Create an array of pointers to structures
 ```c
 node* a[MAX];
 ```
-<img src="10.png" width=50%>
+<img src="images/10.png" width=50%>
 
 Every index now acts like a vertex and we chain the nodes which are connected to the vertex with the index.
 ___
@@ -241,20 +241,23 @@ void create ( node* a[], int n)
 }
 ~~~
 
-Understanding the code by breaking it into segments
-~~~c
-    int i , j;
-    for(i =0 ; i<n;i++)
-    {
-        a[i]=NULL;
-    }
+*Understanding the code by breaking it into segments*
 
-    // The first part of the funciton is setting each array index position as NULL.  
+- First part  
 
-~~~
+    ~~~c
+        int i , j;
+        for(i =0 ; i<n;i++)
+        {
+            a[i]=NULL;
+        }
+    ~~~
+        The first part of the funciton is setting each array index position as NULL.  
 <br>  
 
-~~~c
+- Second part  
+
+    ~~~c
     while(1)
     {
         printf("Enter the source and destination");
@@ -264,13 +267,15 @@ Understanding the code by breaking it into segments
             break;
         }
         insert(a,i,j);
+    }   
+    ~~~
+    The second part of the function takes source and destination and if they are valid it calls the insert function with source and destination
 
-    // The second part of the function takes source and destination and if they are valid it calls the insert function with source and destination
-    }
-~~~
+``` Create Fucntion is a Helper Fucntion to insert fucntion```
 
-*Create Fucntion* is a Helper Fucntion to insert fucntion
 
+
+#### *Insert function*  
 
 ~~~c
 void insert (node * a[], int i , int j)
@@ -294,31 +299,44 @@ void insert (node * a[], int i , int j)
     cur->link=temp;
 }
 ~~~
-Understanding the code by breaking it into segments
-
-~~~c
-node* temp = (node*)malloc(sizeof(node));
-temp-> data = j;
-temp->link =NULL;
-
-// This Part creates a node and assign the destination as the value of the node
-~~~
 
 
-~~~c
-node* cur = a[i];
-if( cur->link ==NULL)
-{
-    a[i]=temp;
-    return;
-}
+Lets try to Understand the code by breaking it into segments
 
-while(cur->link!=NULL)
-{
-    cur=cur->link;
-}
+- Part 1 : ***Creating a new node***
 
-cur->link=temp;
-~~~
+    ~~~c
+    node* temp = (node*)malloc(sizeof(node));
+    temp-> data = j;
+    temp->link =NULL;
+    ~~~
+    The above Part creates a node and assign the destination as the value of the node
+
+- Part 2 :  ***Insert at Rear in Singly Linked List***  
+    -   Check for empty list  
+
+        ~~~c
+        node* cur = a[i];
+        if( cur ==NULL)
+        {
+            a[i]=temp;
+            return;
+        }
+        ~~~
+
+        We check if the if index is pointingto NULL that means the list is emptyso the node we just created willbecome the head of the list.
+
+    - Insert anywhere else
+
+        ~~~c
+        while(cur->link!=NULL)
+        {
+            cur=cur->link;
+        }
+        cur->link=temp;
+        ~~~
+
+        
+
 
 
