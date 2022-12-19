@@ -83,8 +83,9 @@ void create_graph(graph *adj_matrix)
         scanf("%d%d", &i , &j);
         if( i< 0 || j < 0|| i> MAX || j > MAX)
         {
-            adj_matrix-> adj[i][j];
+            break;
         }
+        adj_matrix-> adj[i][j];
     }
 }
 ~~~
