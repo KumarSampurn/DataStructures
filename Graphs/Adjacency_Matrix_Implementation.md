@@ -290,3 +290,67 @@ while ( front < = rear )
 * if ( matrix [ vertex ][ i ] == 1 ) this statement is adjacent vertex finder.   
 That means if there is a path from *vertex to i* and if the *visited for the i is 0* that means ***i is an unvisited adjacent vertex*** so we *print it* and *enqueue to the queue.*
 
+### <p align ="center">*DFS: DEPTH FIRST SEARCH*</p>
+
+* Pre -requisites :  
+    - How Recursion works especially **Backtracking** in Recursion,  
+    - How DFS works, 
+
+
+* DFS ALGOTRITHM  
+    * We will be using system stack for this.
+    * Select a Starting vertex for DFS and make it visited.
+    * Visit *all Adjacent vertices*.
+    * If any of the adjacent vertex *is unvisited  start DFS for the vertex* .
+    * If the loop is over start Backtracking.
+    
+
+
+~~~c
+void dfs ( int matrix [][] , int visited [],int vertex , int n)
+{
+    visited [vertex] = 1 ;
+    printf("Vertex %d is visited " , vertex);
+
+    for ( int i = 0; i < n ; i++)
+    {
+        if(matrix[vertex][i]==1  && visited [i]==0)
+        {
+            dfs( martrix , visited , i , n );
+        }
+    }
+}
+~~~
+
+Lets Try To understand the code :  
+~~~c 
+void dfs ( int matrix [][] , int visited [],int vertex , int n)
+~~~
+
+Our Function takes Three Arguments :
+* **int matrix[ ][ ]** : The Adjacency Matrix 
+* **int visited [ ]** : The visited array
+* **int vertex** : The Starting Vertex 
+* **int n** : The number of Vertices 
+
+
+
+~~~c
+visited [vertex] = 1 ;
+~~~
+Mark the vertex as visited 
+
+~~~c
+for ( int i = 0; i < n ; i++)
+    {
+        if(matrix[vertex][i]==1  && visited [i]==0)
+        {
+            dfs( martrix , visited , i , n );
+        }
+    }
+~~~
+
+A loop for all the vertices in the matrix if there is connection between vertex and i and the i<sup>th</sup> vertex is not visited then start a DFS for i<sup>th</sup> vertex .
+
+
+The code for DFS is easy but the conceptually it is hard as there is a lot of backtracking involved.
