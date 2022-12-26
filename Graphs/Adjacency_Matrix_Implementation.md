@@ -63,7 +63,8 @@ typedef struct graph
         > Note :  
         The above snippets are not equivalent statements they are just to make you understand how pointer works here  
             
-        ***graph*** is used in above example but in practice ***graph*** is the name of the data strucutre so we use ***adj_matrix*** as the name of the data structure.
+        ***graph*** is used in above example but in practice ***graph*** is the name of the data strucutre so we use ***adj_matrix*** as the pointer variable of the data structure "Graph".  
+        <br>
 ---  
 
 ## <p align="center"><em>ADT OF GRAPHS</em></p>  
@@ -129,7 +130,7 @@ void display()
 }
 ~~~
 
- At first it might look a bit intimidating but its basicaaly displaying the contents of a double dimensional array which is easy as we are taking two loops one nested inside other and we print all the elements in array 
+ At first it might look a bit intimidating but its basically displaying the contents of a double dimensional array which is easy as we are taking two loops one nested inside other and we print all the elements in the 2D array.  
 
  *0* means that there **is no path** between *vertex i and vertex  j*
 
@@ -160,7 +161,7 @@ int indegree(graph *adj_matrix , int v)
 }
 ~~~
 
-*adj [ i ][ v ]* specifies there *from index i to index v* if there is a path from index i to index v then adj [ i ][ v ] will be 1 . That is approach behind calculating indegree.
+*adj [ i ][ v ]* means *from index i to index v* ,  if there is a path from *index i to index v* then ***adj [ i ][ v ] will be 1*** . That is approach behind calculating indegree.
 ___
 <br>  
 
@@ -181,12 +182,8 @@ int outdegree(graph *adj_matrix , int v)
     }
 }
 ~~~
-Similar to Indegree we have Outdegree.  
+Similar to Indegree we calulate Outdegree.  
 <br>
-
-
-
-
 
 
 >Note :  
@@ -197,6 +194,99 @@ For Undirected Graphs Both Indegree And Outdegree are same.
 ___
 <br>  
 
-### <p align ="center">***Traversal Methods***</p>
+### <p align ="center">**Traversal Methods**</p>
+### <p align ="center">*BFS: BREADTH FIRST SEARCH*</p>
 
+* Pre -requisites :  
+    - How Queues works,   
+    - How BFS works, 
+
+
+* BFS ALGOTRITHM  
+    * Select a Starting vertex for BFS and enqueue it to the queue.
+    * Visit *all Adjacent vertices*.
+    * if any of the adjacent vertex *is unvisited* *make it visited* then *enqueue it to the queue*. 
+    * While the *queue is not empty* dequeue a element from the queue and *repeat the above two statements* with dequeued element at starting vertex.
+
+
+~~~c
+void bfs ( int matrix [][] , int vertex , int n)
+{
+    int visited[n]= { 0 };
+    int queue[n];
+    int rear = -1 ,front = 0;
+
+    visited[vertex] = 1 ;
+    queue[++rear] = vertex ;
+    
+    while ( front < = rear )
+    {
+        vertex = queue[front++];
+        for( int i = 0 ; i< n ; i++)
+        {
+            if( matrix [vertex][i]==1 )
+            {
+                if( visited [i] == 0)
+                {
+                    visited [i] =1 ;
+                    printf(" Vertex %d is visited ", i);
+                    queue[++rear]=i;
+                }
+            }
+        }
+    }
+}
+~~~
+
+Lets Try To understand the code :  
+~~~c 
+void bfs ( int matrix [][] , int vertex , int n)
+~~~
+
+Our Function takes Three Arguments :
+* **int matrix[ ][ ]** : The Adjacency Matrix 
+* **int vertex** : The Starting Vertex 
+* **int n** : The number of Vertices 
+
+~~~c
+int visited[n]= { 0 };
+int queue[n];
+int rear = -1 ,front = 0;
+~~~
+
+We are creating :  
+- A visited array of size n with initialized values as 0 , which we will use to keep track which all vertices have been visited.
+
+- A queue with rear and front for bfs traversal.
+
+~~~c
+visited[vertex] = 1 ;
+queue[++rear] = vertex ;
+~~~
+Marking the Vertex as Visited and enqueuing it to the queue.
+
+~~~c
+while ( front < = rear )
+    {
+        vertex = queue[front++];
+        for( int i = 0 ; i< n ; i++)
+        {
+            if( matrix [vertex][i]==1 )
+            {
+                if( visited [i] == 0)
+                {
+                    visited [i] =1 ;
+                    printf(" Vertex %d is visited ", i);
+                    queue[++rear]=i;
+                }
+            }
+        }
+    }
+~~~
+
+* While queue is not empty 
+* Dequeue an element from the queue and store it to the vertex. 
+* a for loop for all the vertices in the matrix.
+* if ( matrix [ vertex ][ i ] == 1 ) this statement is adjacent vertex finder.   
+That means if there is a path from *vertex to i* and if the *visited for the i is 0* that means ***i is an unvisited adjacent vertex*** so we *print it* and *enqueue to the queue.*
 
