@@ -113,6 +113,16 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 
         ![image](images/7.png)
 
+* Connected Components
+
+    * Number of Vertices connected together  
+
+        ![image](images/cc1.png)
+        There are 2 Connected Components in this example.
+
+        ![image](images/cc2.png)
+        There is 1 Connected Components in this example
+
 
 * Degree of a Vertex 
 
@@ -162,18 +172,33 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
     * BFS : Breadth First Search  
     Approach :  
 
-        - Visit all unvisited neighbouring nodes.
-        - Push them into Queue while Visiting them.
-        - Now Repeat both the above step until the Queue is not empty.
+        - Push one ( starting ) Vertex in Queue
+        - Dequeue a Vertex from the Queue.
+        - Visit all adjacent vertices. 
+        - If an adjacent vertex is unvisited  , push them into Queue while Visiting them.
+        - Now Repeat the last 3 steps until the Queue is not empty.
 
         Lets take an example to understand this.  
         
         <img src="images/bfs1.png"  width="50%"><img src="images/bfs2.png"  width="50%" ><img src="images/bfs3.png"  width="50%" ><img src="images/bfs4.png"  width="50%" ><img src="images/bfs5.png"  width="50%" ><img src="images/bfs6.png"  width="50%" ><img src="images/bfs7.png"  width="50%" ><img src="images/bfs8.png"  width="50%" ><img src="images/bfs9.png"  width="50%" ><img src="images/bfs10.png"  width="50%"><img src="images/bfs11.png"  width="50%" ><img src="images/bfs12.png"  width="50%" ><img src="images/bfs13.png"  width="50%" ><img src="images/bfs14.png"  width="50%" ><img src="images/bfs15.png"  width="50%" ><img src="images/bfs12.png"  width="50%" >
 
+    * DFS : Depth First Search  
+    Approach :  
+
+        - Push one Vertex into Stack
+        - Pop a Vertex from the Stack.
+        - Visit an adjacent node if it is unvisited push it into the stack. 
+        - Now Repeat the above 2 steps until the Stack is not empty.
+
+        Lets take an example to understand this.  
+        
+        <img src="images/dfs1.png"  width="50%"><img src="images/dfs2.png"  width="50%"><img src="images/dfs3.png"  width="50%"><img src="images/dfs4.png"  width="50%"><img src="images/dfs5.png"  width="50%"><img src="images/dfs6.png"  width="50%"><img src="images/dfs7.png"  width="50%"><img src="images/dfs8.png"  width="50%"><img src="images/dfs9.png"  width="50%"><img src="images/dfs10.png"  width="50%"><img src="images/dfs11.png"  width="50%"><img src="images/dfs12.png"  width="50%"><img src="images/dfs13.png"  width="50%"><img src="images/dfs14.png"  width="50%"><img src="images/dfs15.png"  width="50%"><img src="images/dfs16.png"  width="50%"><img src="images/dfs17.png"  width="50%"><img src="images/dfs18.png"  width="50%"><img src="images/dfs19.png"  width="50%"><img src="images/dfs20.png"  width="50%"><img src="images/dfs21.png"  width="50%"><img src="images/dfs22.png"  width="50%">
 
 
+    > Note :  
+    Whenever you do a **BFS/DFS** Traversal the traversal they are limited to only a connected component that means if there are more than one connected components then you have to **BFS/DFS** for every connected components to get all the elements of the graph.  
 
-
+<br>  
 
 ---
 ***<p align="center">Thats All for Theory</p>***  
