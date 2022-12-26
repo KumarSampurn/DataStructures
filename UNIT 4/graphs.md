@@ -69,7 +69,7 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 ![image](images/4.png)
 
 
-#### Terminologies Important : 
+#### Important Concepts  : 
 ---
 
 * Adjacency 
@@ -157,7 +157,22 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
      **Indegree** and **Outdegree** for a vertex in Undirected graph are equal.
 
 
+* Traversal Methods 
+
+    * BFS : Breadth First Search  
+    Approach :  
+
+        - Visit all unvisited neighbouring nodes.
+        - Push them into Queue while Visiting them.
+        - Now Repeat both the above step until the Queue is not empty.
+
+        Lets take an example to understand this.  
         
+        <img src="images/bfs1.png"  width="50%"><img src="images/bfs2.png"  width="50%" ><img src="images/bfs3.png"  width="50%" ><img src="images/bfs4.png"  width="50%" ><img src="images/bfs5.png"  width="50%" ><img src="images/bfs6.png"  width="50%" ><img src="images/bfs7.png"  width="50%" ><img src="images/bfs8.png"  width="50%" ><img src="images/bfs9.png"  width="50%" ><img src="images/bfs10.png"  width="50%"><img src="images/bfs11.png"  width="50%" ><img src="images/bfs12.png"  width="50%" ><img src="images/bfs13.png"  width="50%" ><img src="images/bfs14.png"  width="50%" ><img src="images/bfs15.png"  width="50%" ><img src="images/bfs12.png"  width="50%" >
+
+
+
+
 
 
 ---
