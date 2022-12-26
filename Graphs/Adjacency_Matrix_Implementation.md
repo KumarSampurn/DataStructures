@@ -142,10 +142,10 @@ ___
 <br>  
 
 ### <p align ="center">Calculating **Indegree**</p>  
-
 <br>  
 
 *Indegree of a Vertex* is the ***number of paths leading*** to the ***Vertex***.  
+
 
 ~~~c
 int indegree(graph *adj_matrix , int v)

@@ -44,7 +44,7 @@ ___
 <br>
 
 ### <p align ="center">Creating a graph</p>
-b
+<br>
 
 ~~~c
 void create ( node* a[], int n)
@@ -124,6 +124,13 @@ void insert (node * a[], int i , int j)
     cur->link=temp;
 }
 ~~~
+~~~c 
+    void insert( node* a[] , int i , int j )
+~~~
+The function takes the following argument :
+- node* [ ]  : Array of veritces
+- int i : source index 
+- int j : destination index
 
 
 Lets try to Understand the code by breaking it into segments
@@ -139,7 +146,6 @@ Lets try to Understand the code by breaking it into segments
 
 - Part 2 :  ***Insert at Rear in Singly Linked List***  
     -   Check for empty list  
-
         ~~~c
         node* cur = a[i];
         if( cur ==NULL)
@@ -162,6 +168,90 @@ Lets try to Understand the code by breaking it into segments
         ~~~
 
         
+___ 
+<br>  
 
+### <p align ="center">Displaying a graph</p>  
+
+<br>
+
+~~~c
+void display( node * array[] , int n)
+{
+    for ( int i = 0 ; i < n ; i++)
+    {
+        node* cur = array[i];
+        printf("%d\t", i);
+        while( cur ! = NULL)
+        {
+            printf("--> %d " , cur->data);
+            cur=cur->link; 
+        }
+        printf("\n");
+    }
+}
+~~~
+
+Displaying the contents of the graph is similar to displaying the contents of the linked list for n iterations.
+
+
+___  
+<br>  
+
+### <p align ="center">Calculating **Indegree**</p>  
+<br>  
+
+*Indegree of a Vertex* is the ***number of paths leading*** to the ***Vertex***.
+
+~~~c
+int indegree( node * array[] , int n ; int vertex)
+{
+    node* cur =NULL;
+    int count = 0;
+    for ( int i = 0; i< n ; i++)
+    {
+        node * cur= array[i];
+        while( cur != NULL)
+        {
+            if( cur->data == vertex)
+                count++;
+
+            cur= cur->link;
+        }
+    }
+    return count;
+}
+~~~
+The logic behind calculating indegree is counting number of occurence of vertex in the lists of each index of array .
+
+That is what we are trying to do :
+- First we take a loop a for all the vertices 
+- We then traverse the list of every index and check if ***cur->data == vertex*** if thats true we increment the count by 1.
+
+<br>  
+
+___  
+
+### <p align ="center">Calculating **Outdegree**</p>
+
+
+*Outdegree of a Vertex* is the ***number of paths leading away*** from the ***Vertex***.
+
+~~~c
+int outdegree ( node* array[] , int n , int vertex)
+{
+    node* cur = array[vertex];
+    int length = 0;
+
+    while( cur!=NULL)
+    {
+        length++;
+        cur= cur-> link;
+    }
+    return length;
+}
+~~~
+
+Since we add only those element in the list which can be accessed from a vertex directly therefore the length of the list will tell us the Outdegree of the vertex.  
 
 
