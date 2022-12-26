@@ -116,13 +116,48 @@ In an adjacency matrix a[i,j] signifies that there is a path from vertex i to ve
 
 * Degree of a Vertex 
 
-    * No . of Edges Connected to **Vertex**.
+    Number of Edeges connected to a vertex .  
+    There are two types of Degree.
 
-        * Indegree  
-            - Number of incoming Edges
+    * Indegree  
+    <br>
+    *Indegree of a Vertex* is the ***number of paths leading*** to the ***Vertex***.  
 
-        * OutDegree  
-            - Number of Outgoing Edges
+        * Directed Graphs  
+
+            ![image](images/7.png)
+
+            Indegree of B is 2.   
+            Indegree of C is 0.  
+
+        * Undirected Graphs  
+
+            ![image](images/1.png)
+            Indegree of B is 4.  
+            Indegree of C is 2.
+
+    * Outdegree  
+    <br>
+    *Outdegree of a Vertex* is the ***number of paths leading away*** from the ***Vertex***.  
+
+        * Directed Graphs  
+
+            ![image](images/7.png)
+
+            Outdegree of B is 0.   
+            Indegree of C is 2.  
+
+        * Undirected Graphs  
+
+            ![image](images/1.png)
+            Outdegree of B is 4.  
+            Outdegree of C is 2.
+
+    > Note:  
+     **Indegree** and **Outdegree** for a vertex in Undirected graph are equal.
+
+
+        
 
 
 ---
