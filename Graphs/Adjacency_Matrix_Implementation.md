@@ -79,7 +79,7 @@ ___
 
 ### <p align ="center">Creating a graph</p>
 ~~~c
-void create_graph(graph *adj_matrix)
+void createGraph(graph *adj_matrix)
 {
     int i , j;
 
@@ -95,11 +95,9 @@ void create_graph(graph *adj_matrix)
     {
         printf("Enter the source and Destination position");   
         scanf("%d%d", &i , &j);
-        if( i< 0 || j < 0|| i> MAX || j > MAX)
-        {
+        if( i< 0 || j < 0|| i> adj_mat->n || j > adj_mat->n)
             break;
-        }
-        adj_matrix-> adj[i][j];
+        adj_matrix-> adj[i][j]=1;
     }
 }
 ~~~
@@ -117,15 +115,16 @@ ___
 <br>  
 
 ~~~c
-void display()
+void display(graph *adj_matrix)
 {
     for(int i=0 ; i< adj_matrix -> n ; i++)
     {
         for( int j =0 ; j< adj_matrix -> n ;j++)
 
         {
-            printf("%d \t" adj_matrix->adj[i][j]);
+            printf("%d \t", adj_matrix->adj[i][j]);
         }
+        printf("\n");
     }
 }
 ~~~
@@ -148,12 +147,12 @@ ___
 
 
 ~~~c
-int indegree(graph *adj_matrix , int v)
+int indegree(graph *adj_matrix , int vertex)
 {
     int count =0 ;
     for(int i =0; i< adj_matrix-> n;i++)
     {
-        if( adj_matrix -> adj[i][v]==1 )
+        if( adj_matrix -> adj[i][vertex]==1 )
         {
             count++;
         }
@@ -161,7 +160,7 @@ int indegree(graph *adj_matrix , int v)
 }
 ~~~
 
-*adj [ i ][ v ]* means *from index i to index v* ,  if there is a path from *index i to index v* then ***adj [ i ][ v ] will be 1*** . That is approach behind calculating indegree.
+*adj [ i ][ vertex ]* means *from index i to index v* ,  if there is a path from *index i to index v* then ***adj [ i ][ vertex ] will be 1*** . That is approach behind calculating indegree.
 ___
 <br>  
 
@@ -170,16 +169,17 @@ ___
 
 *Outdegree of a Vertex* is the ***number of paths leading away*** from the ***Vertex***.
 ~~~c
-int outdegree(graph *adj_matrix , int v)
+int outdegree(graph *adj_matrix , int vertex)
 {
     int count =0 ;
     for(int i =0; i< adj_matrix-> n;i++)
     {
-        if(adj_matrix ->adj[v][i]==1)
+        if(adj_matrix ->adj[vertex][i]==1)
         {
             count++;
         }
     }
+    return count;
 }
 ~~~
 Similar to Indegree we calulate Outdegree.  
@@ -351,7 +351,14 @@ for ( int i = 0; i < n ; i++)
     }
 ~~~
 
-A loop for all the vertices in the matrix if there is connection between vertex and i and the i<sup>th</sup> vertex is not visited then start a DFS for i<sup>th</sup> vertex .
+A loop for all the vertices in the matrix if there is connection between vertex and i and the i<sup>th</sup> vertex is not visited then start a DFS for i<sup>th</sup> vertex.
 
 
-The code for DFS is easy but the conceptually it is hard as there is a lot of backtracking involved.
+```The code for DFS is easy but the conceptually it is hard as there is a lot of backtracking involved.```
+
+___
+## <p align ="center">***Thats all for Theory***</p>
+___
+
+> **P.S.**  
+*In actual coding the function prototypes may change but the concepts will be same.*

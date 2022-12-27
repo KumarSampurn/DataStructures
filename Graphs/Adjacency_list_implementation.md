@@ -454,7 +454,13 @@ The **DFS** takes three arguments:
 
 * Visiting a vertex marking it as visited.
 * traversing the list of the vertex and if the element in the list in not visited 
-* startimg the DFS for the element.
- 
-> NOTE :  
-Dry Run once to Understand how Backtracking works.
+* startimg the DFS for the element.  
+
+* Dry Run once to Understand how Backtracking works.
+
+___
+## <p align ="center">***Thats all for Theory***</p>
+___
+
+> **P.S.**  
+*In actual coding the function prototypes may change but the concepts will be same.*
