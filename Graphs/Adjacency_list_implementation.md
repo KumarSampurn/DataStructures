@@ -142,7 +142,7 @@ Lets try to Understand the code by breaking it into segments
     temp-> data = j;
     temp->link =NULL;
     ~~~
-    The above Part creates a node and assign the destination as the value of the node
+    This Part creates a node and assign the destination as the value of the node.
 
 - Part 2 :  ***Insert at Rear in Singly Linked List***  
     -   Check for empty list  
@@ -274,7 +274,127 @@ ___
     * While the *queue is not empty* dequeue a element from the queue and *repeat the above two statements* with dequeued element at starting vertex.
 
 ~~~c
+void bfs (node *array[] ,int n , int vertex)
+{
+    int visited[n]={0};
+    node *queue =NULL , *current;
 
+    visited[vertex]=1;
+    queue = insertRear(queue, vertex);
 
+    while(queue != NULL)
+    {
+        vertex = queue->data;
+        queue = deleteFront(queue);
+        current= array[vertex];
 
+        while(current!=NULL)
+        {
+            if(visited[current->data]==0)
+            {
+                visited[current->data]=1;
+                printf("%d vertex is visited \t", current->data);
+                queue=deleteFront(queue,list->data);
+            }
+            current=current->link;
+        }
+    }
+}
 ~~~
+Lets Understand the code:     
+~~~c
+void bfs( node* array[] , int n , int vertex)
+~~~
+
+The Function takes three arguments :  
+* node* array [ ] : The array of vertices
+* int n : number of vertices 
+* int vertex : The vertex to start the BFS from.
+
+~~~c
+int visited[n]={0};
+node *queue =NULL , *current;
+~~~
+Declaring a Visited array , a queue.
+
+~~~c
+visited[vertex]=1;
+queue = insertRear(queue, vertex);
+~~~
+Visiting the Vertex and Enqueing it into the queue.
+
+~~~c
+while(queue != NULL)
+    {
+        vertex = queue->data;
+        queue = deleteFront(queue);
+        current= array[vertex];
+
+        while(current!=NULL)
+        {
+            if(visited[current->data]==0)
+            {
+                visited[current->data]=1;
+                printf("%d vertex is visited \t", current->data);
+                queue=insertRear(queue,list->data);
+            }
+            current=current->link;
+        }
+    }
+~~~
+Lets try to understand this snippet:  
+* While the queue is not empty
+* We are Dequeing an vertex from the Queue
+* Traversing the vertex's list and if the new vertex in list is not visited we are enqueing it to the queue and printing it . 
+
+
+
+
+
+```Helper Functions```
+~~~c
+node* insertRear(node* queue , int element)
+{
+    // Creating a new node
+    node* temp = (node*)malloc(sizeof(node));
+    temp->data = element;
+    temp->link = NULL;
+
+    // if queue is empty 
+    if(queue==NULL)
+    {
+        list = temp;
+        return queue;
+        // return temp; avoid above lines by returning temp
+    }
+
+    // Insert at end 
+    node* cur= queue;
+    while(cur->link !=NULL)
+    {
+        cur=cur->link;
+    }
+    cur->link = temp;
+    return list;
+
+}
+
+node* deleteFront( node*  queue  )
+{
+    // if queue is empty
+    if( queue ==NULL)
+        return NULL;
+
+    // returning the second node and freeing the first one.
+    node* second = queue ->link;
+    free(queue);
+    return second;
+
+    // return queue->link; improper way of proceding without freeing but works. So a man has to do what he has to do.
+}
+~~~
+
+
+
+
+
