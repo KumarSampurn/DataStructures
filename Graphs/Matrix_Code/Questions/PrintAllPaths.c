@@ -1,4 +1,4 @@
-/*dfs matrix*/
+// Write A program to print all paths from source to destination
 #include<stdio.h>
 #include<stdlib.h>
 #define MAX 10
