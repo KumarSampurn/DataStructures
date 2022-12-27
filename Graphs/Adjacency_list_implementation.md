@@ -276,7 +276,7 @@ ___
 ~~~c
 void bfs (node *array[] ,int n , int vertex)
 {
-    int visited[n]={0};
+    int visited[MAX]={0};
     node *queue =NULL , *current;
 
     visited[vertex]=1;
@@ -312,7 +312,7 @@ The Function takes three arguments :
 * int vertex : The vertex to start the BFS from.
 
 ~~~c
-int visited[n]={0};
+int visited[MAX]={0};
 node *queue =NULL , *current;
 ~~~
 Declaring a Visited array , a queue.

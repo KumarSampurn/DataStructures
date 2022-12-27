@@ -212,7 +212,7 @@ ___
 ~~~c
 void bfs ( int matrix [][] , int vertex , int n)
 {
-    int visited[n]= { 0 };
+    int visited[MAX]= { 0 };
     int queue[n];
     int rear = -1 ,front = 0;
 
@@ -249,7 +249,7 @@ Our Function takes Three Arguments :
 * **int n** : The number of Vertices 
 
 ~~~c
-int visited[n]= { 0 };
+int visited[MAX]= { 0 };
 int queue[n];
 int rear = -1 ,front = 0;
 ~~~
