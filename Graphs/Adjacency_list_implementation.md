@@ -128,7 +128,7 @@ void insert (node * a[], int i , int j)
     void insert( node* a[] , int i , int j )
 ~~~
 The function takes the following argument :
-- node* [ ]  : Array of veritces
+- node* [ ]  : An Array of pointers where every index is a vertex 
 - int i : source index 
 - int j : destination index
 
@@ -307,7 +307,7 @@ void bfs( node* array[] , int n , int vertex)
 ~~~
 
 The Function takes three arguments :  
-* node* array [ ] : The array of vertices
+* node* array [ ] : An Array of pointers where every index is a vertex 
 * int n : number of vertices 
 * int vertex : The vertex to start the BFS from.
 
@@ -393,8 +393,68 @@ node* deleteFront( node*  queue  )
     // return queue->link; improper way of proceding without freeing but works. So a man has to do what he has to do.
 }
 ~~~
+___
+
+### <p align ="center">*DFS: DEPTH FIRST SEARCH*</p>
+
+* Pre -requisites :  
+    - How Recursion works especially **Backtracking** in Recursion,  
+    - How DFS works, 
+
+* DFS ALGOTRITHM  
+    * We will be using system stack for this.
+    * Select a Starting vertex for DFS and make it visited.
+    * Visit *all Adjacent vertices*.
+    * If any of the adjacent vertex *is unvisited  start DFS for the vertex* .
+    * If the loop is over start Backtracking.
+
+~~~c
+void dfs(node* array[] , int visited[] , int vertex)
+{
+    visited[vertex]=1;
+    printf("%d vertex is visited ", vertex);
+
+    node* cur=array[vertex];
+    while( cur!= NULL)
+    {
+        if(visited[cur->data]==0)
+        {
+            dfs(array , visited , cur->data);
+            cur=cur->link;
+        }
+    }
+}
+~~~
+Lets Try to understand the code:  
+
+~~~c
+void dfs( node* array[] , int visited[] , int vertex )
+~~~
+The **DFS** takes three arguments:
+
+* node* array [  ] : An Array of pointers where every index is a vertex 
+* int visited [ ] : An visited Array to keep track which all elements have been visited so far.
+* int vertex : The vertex to start the DFS from. 
 
 
+~~~c
+    visited[vertex]=1;
+    printf("%d vertex is visited ", vertex);
 
+    node* cur=array[vertex];
+    while( cur!= NULL)
+    {
+        if(visited[cur->data]==0)
+        {
+            dfs(array , visited , cur->data);
+            cur=cur->link;
+        }
+    }
+~~~
 
-
+* Visiting a vertex marking it as visited.
+* traversing the list of the vertex and if the element in the list in not visited 
+* startimg the DFS for the element.
+ 
+> NOTE :  
+Dry Run once to Understand how Backtracking works.

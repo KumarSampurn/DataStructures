@@ -290,6 +290,7 @@ while ( front < = rear )
 * if ( matrix [ vertex ][ i ] == 1 ) this statement is adjacent vertex finder.   
 That means if there is a path from *vertex to i* and if the *visited for the i is 0* that means ***i is an unvisited adjacent vertex*** so we *print it* and *enqueue to the queue.*
 
+___
 ### <p align ="center">*DFS: DEPTH FIRST SEARCH*</p>
 
 * Pre -requisites :  
