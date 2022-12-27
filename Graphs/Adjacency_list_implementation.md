@@ -294,7 +294,7 @@ void bfs (node *array[] ,int n , int vertex)
             {
                 visited[current->data]=1;
                 printf("%d vertex is visited \t", current->data);
-                queue=deleteFront(queue,list->data);
+                queue=insertRear(queue,list->data);
             }
             current=current->link;
         }
@@ -375,7 +375,7 @@ node* insertRear(node* queue , int element)
         cur=cur->link;
     }
     cur->link = temp;
-    return list;
+    return queue;
 
 }
 
