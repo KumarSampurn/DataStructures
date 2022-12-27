@@ -110,7 +110,7 @@ void insert (node * a[], int i , int j)
     temp->link =NULL;
 
     node* cur = a[i];
-    if( cur->link ==NULL)
+    if( cur ==NULL)
     {
         a[i]=temp;
         return;
