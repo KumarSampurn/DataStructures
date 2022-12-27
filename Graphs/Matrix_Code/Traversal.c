@@ -72,6 +72,22 @@ void bfs ( int matrix[][MAX] , int vertex , int n)
     }
 }
 
+void dfs ( int matrix [][MAX] , int visited [],int vertex , int n)
+{
+    visited [vertex] = 1 ;
+    // printf("Vertex %d is visited " , vertex);
+    printf(" %d \t" , vertex);
+
+    for ( int i = 0; i < n ; i++)
+    {
+        if(matrix[vertex][i]==1  && visited [i]==0)
+        {
+            dfs( matrix, visited , i , n );
+        }
+    }
+}
+
+
 int main() 
 {
 
@@ -103,7 +119,8 @@ int main()
             case 2: 
                 printf("Enter the vertex: ");
                 scanf("%d", &vertex);
-                
+                int visited[MAX]={0};
+                dfs(adj_matrix.adj,visited,vertex,adj_matrix.n);
                 break;
             
             case 3: 
