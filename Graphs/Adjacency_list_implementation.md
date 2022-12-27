@@ -255,3 +255,26 @@ int outdegree ( node* array[] , int n , int vertex)
 Since we add only those element in the list which can be accessed from a vertex directly therefore the length of the list will tell us the Outdegree of the vertex.  
 
 
+___ 
+
+<br>  
+
+### <p align ="center">**Traversal Methods**</p>
+### <p align ="center">*BFS: BREADTH FIRST SEARCH*</p>
+
+* Pre -requisites :  
+    - How Queues works,   
+    - How BFS works, 
+
+
+* BFS ALGOTRITHM  
+    * Select a Starting vertex for BFS and enqueue it to the queue.
+    * Visit *all Adjacent vertices*.
+    * if any of the adjacent vertex *is unvisited* *make it visited* then *enqueue it to the queue*. 
+    * While the *queue is not empty* dequeue a element from the queue and *repeat the above two statements* with dequeued element at starting vertex.
+
+~~~c
+
+
+
+~~~
