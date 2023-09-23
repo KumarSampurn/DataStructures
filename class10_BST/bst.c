@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define the structure for the binary tree node
 typedef struct treeNode {
     int data;
     struct treeNode* left;
@@ -61,125 +60,123 @@ void inorderTraversal(node* root) {
 
 // Function to search for a value in the binary search tree
 int search(node* root, int data) {
-    if(root==NULL){
+    if (root == NULL) {
         return 0;
     }
+
     if (root->data == data) {
         return 1;
     }
-     
 
     if (data < root->data) {
-        search(root->left, data);
+        return search(root->left, data);
     } else {
-        search(root->right, data);
+        return search(root->right, data);
     }
-
 }
 
-
-
- node * inorderSuccesor( node* root) {
+node* inorderSuccesor(node* root) {
     node* current = root;
- 
+
     /* loop down to find the leftmost leaf */
     while (current->left != NULL)
         current = current->left;
- 
+
     return current;
 }
 
-
-
-node* delete(node* root , int data){
-
-    if (root== NULL)
-    {
+node* delete(node* root, int data) {
+    if (root == NULL) {
         return root;
     }
 
     // if the data is smaller than root node
-    if (data < root->data)
-    {
-        root->left= delete(root->left, data);
-    }
-
-    else if (data > root->data)
-    {
-        root->right= delete(root->right, data);
-    }
-
-    // root -> data == data
-
-    else if(root -> data == data){
-
-        if(root->right == NULL && root ->left ==NULL){
+    if (data < root->data) {
+        root->left = delete(root->left, data);
+    } else if (data > root->data) {
+        root->right = delete(root->right, data);
+    } else if (root->data == data) {
+        if (root->right == NULL && root->left == NULL) {
             free(root);
             return NULL;
         }
 
-         if (root->right==NULL)
-        {
-            node* temp= root->left;
+        if (root->right == NULL) {
+            node* temp = root->left;
             free(root);
-            return ( temp);
+            return temp;
         }
 
-        if (root->left==NULL)
-        {
-            node* temp= root->right;
+        if (root->left == NULL) {
+            node* temp = root->right;
             free(root);
-            return ( temp);
+            return temp;
         }
-        
-        node* temp= inorderSuccesor(root);
 
-        root->data=temp->data;
-
-        root->right=delete(root->right,root->data);
-        
-
+        node* temp = inorderSuccesor(root);
+        root->data = temp->data;
+        root->right = delete(root->right, temp->data);
     }
 
-
-    // root-> data != data   
-        return root;
-
-
+    return root;
 }
-
-
 
 int main() {
     node* root = NULL;
+    int choice, data, searchData, deleteData;
 
-    // Insert nodes into the binary search tree
-    root = insertNode(root, 50);
-    root = insertNode(root, 30);
-    root = insertNode(root, 70);
-    root = insertNode(root, 20);
-    root = insertNode(root, 40);
-    root = insertNode(root, 60);
+    do {
+        printf("\nBinary Search Tree Operations:\n");
+        printf("1. Insert a value\n");
+        printf("2. Inorder Traversal\n");
+        printf("3. Search a value\n");
+        printf("4. Delete a value\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    // Print the binary search tree using inorder traversal
-    printf("Inorder Traversal: ");
-    inorderTraversal(root);
-    printf("\n");
+        switch (choice) {
+            case 1:
+                printf("Enter a value to insert: ");
+                scanf("%d", &data);
+                root = insertNode(root, data);
+                break;
 
-    // Search for a value in the binary search tree
-    // search(root, 30);
-    printf("%d\n", search(root, 60));
+            case 2:
+                printf("Inorder Traversal: ");
+                inorderTraversal(root);
+                printf("\n");
+                break;
 
-    // Cleanup: free the memory used by the tree nodes (not shown in this code)
+            case 3:
+                printf("Enter a value to search: ");
+                scanf("%d", &searchData);
+                if (search(root, searchData)) {
+                    printf("%d is present in the tree.\n", searchData);
+                } else {
+                    printf("%d is not present in the tree.\n", searchData);
+                }
+                break;
 
-    delete(root,60);
-    printf("Inorder Traversal: ");
-    inorderTraversal(root);
-    printf("\n");
+            case 4:
+                printf("Enter a value to delete: ");
+                scanf("%d", &deleteData);
+                root = delete(root, deleteData);
+                printf("Inorder Traversal after deletion of %d: ", deleteData);
+                inorderTraversal(root);
+                printf("\n");
+                break;
 
+            case 5:
+                printf("Exiting program\n");
+                break;
+
+            default:
+                printf("Invalid choice. Please enter a valid option.\n");
+        }
+    } while (choice != 5);
+
+    // TODO: Free the memory for the BST nodes
 
     return 0;
 }
-
-
-
