@@ -1,21 +1,23 @@
 #include<stdio.h>
-int queue[6]={0};
 
-int enqueue(int front, int rear, int x){
+#define MAX 10
+int array[MAX]={0};
+
+int insert(int front, int rear, int x){
     if((front+1)%6==rear){
-        printf("Queue is full");
+        printf("array is full");
         return 999;
     }
-    queue[front] = x;
+    array[front] = x;
     front = (front+1)%6;
     return front;
 }
 
 
 
-int dequeue(int front, int rear, int x){
+int remove(int front, int rear, int x){
     if (front==rear){
-        printf("Queue is empty");
+        printf("array is empty");
         return 0;
     }
     rear = (rear+1)%6;
@@ -23,14 +25,14 @@ int dequeue(int front, int rear, int x){
 }
 void display(int front, int rear) {
     if (front == rear) {
-        printf("Queue is empty\n");
+        printf("array is empty\n");
         return;
     }
 
-    printf("Queue elements: ");
+    printf("array elements: ");
     int i = rear;
     while (i != front) {
-        printf("%d ", queue[i]);
+        printf("%d ", array[i]);
         i = (i + 1) % 6;
     }
     printf("\n");
@@ -44,8 +46,8 @@ int main() {
     int choice, x;
 
     do {
-        printf("1. Enqueue\n");
-        printf("2. Dequeue\n");
+        printf("1. insert\n");
+        printf("2. remove\n");
         printf("3. Display\n");
         printf("4. Exit\n");
         printf("Enter your choice: ");
@@ -53,12 +55,12 @@ int main() {
 
         switch (choice) {
             case 1:
-                printf("Enter element to enqueue: ");
+                printf("Enter element to insert: ");
                 scanf("%d", &x);
-                front = enqueue(front, rear, x);
+                front = insert(front, rear, x);
                 break;
             case 2:
-                rear = dequeue(front, rear, x);
+                rear = remove(front, rear, x);
                 break;
             case 3:
                 display(front, rear);
